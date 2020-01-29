@@ -121,17 +121,17 @@ Environment variables are used to manage the different configuration values in d
 
 ### Future plans
 * breaking the backend into smaller microservices:
-** authorization/authentication service
-** sensor value retrieval service
-** potentially more...
+  * authorization/authentication service
+  * sensor value retrieval service
+  * potentially more...
 
 Users then would not login via the backend service but the **authoriation service**. The provided token then would be passed to the **sensor retrieval service** which verifies the token by calling the **authorization/authentication service**.
 
 * more access mechanisms for the data:
-** mobile application
-** Alexa/voice integration
-** chatbot integration
+  * mobile application
+  * Alexa/voice integration
+  * chatbot integration
 
 * monitoring and alarming functionality:
-** setup alarms for the temperature: too hot/ too cold
-** make the system react on sensor values: temperature is too low -> turn up heating
+  * setup alarms for the temperature: too hot/ too cold
+  * make the system react on sensor values: temperature is too low -> turn up heating
