@@ -136,4 +136,4 @@ Users then would not login via the backend service but the **authoriation servic
   * setup alarms for the temperature: too hot/ too cold
   * make the system react on sensor values: temperature is too low -> turn up heating
 
-The final product can be found: https://brakidsensor.herokuapp.com
+The final product can be found: https://brakidsensor.web.app/
