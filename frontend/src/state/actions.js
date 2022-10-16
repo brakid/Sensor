@@ -57,6 +57,7 @@ const getLogin = async (username, passwordHash) => {
       headers: {
         ...getJsonHeaders()
       },
+      mode: 'cors',
       body: JSON.stringify({ 
         username: username,
         passwordhash: passwordHash
@@ -108,7 +109,8 @@ const getLoginUsingToken = async (token) => {
       headers: {
         ...getJsonHeaders(),
         ...getAuthorizationHeader(token)
-      }
+      },
+      mode: 'cors'
     });
   const data = await extractJson(response);
   const isSuccess = data.status === 'success' && data.username && data.token;
@@ -159,7 +161,8 @@ export const logout = () => {
             headers: {
               ...getJsonHeaders(),
               ...getAuthorizationHeader(user.token)
-            }
+            },
+            mode: 'cors'
           });
         const data = await extractJson(response);
         
