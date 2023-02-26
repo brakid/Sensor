@@ -2,9 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import re, os, time, requests, json
+from kafka import KafkaProducer
 
 sensor_id = os.environ.get('SENSOR_ID')
 sensor_secret = os.environ.get('SENSOR_SECRET')
+
+kafka_host = os.environ.get('KAFKA_HOST')
+producer = KafkaProducer(bootstrap_servers=[kafka_host], value_serializer=lambda x: json.dumps(x).encode('utf-8'))
 
 def read_temperature_sensor(path):
 	value = 'U'
@@ -32,3 +36,6 @@ response = requests.post('https://<BACKEND-URL>/api/v1/newvalue', data=json.dump
 
 if response.status_code != 200:
     print time.strftime('%x %X'), 'Error pushing temperature data', response.status_code, response.text
+
+producer.send('temperature', {'sensorId': sensor_id, 'value': temperature})
+producer.flush()
